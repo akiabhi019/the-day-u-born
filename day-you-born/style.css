@@ -1,268 +1,243 @@
-/* ===========================
-   style.css — Complete stylesheet
-   - Includes footer built-by (two styles)
-   - Mobile-first, responsive
-   - Replace/adjust colors below to your taste
-   =========================== */
-
-/* ---------- Variables ---------- */
-:root{
-  --bg: #fafafa;
-  --card: #ffffff;
-  --text: #222;
-  --muted: #6b7280;
-  --accent: #0ea5e9;      /* bright cyan */
-  --accent-dark: #0284c7;
-  --radius: 12px;
-  --shadow-sm: 0 1px 3px rgba(16,24,40,0.04);
-  --shadow-md: 0 6px 20px rgba(16,24,40,0.08);
-  --max-width: 1100px;
-  --glass: rgba(255,255,255,0.6);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ---------- Reset / Base ---------- */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
-html,body{
-  height:100%;
-  margin:0;
-  padding:0;
-  background: var(--bg);
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #E8DFF5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-img{ max-width:100%; display:block; }
-a{ color: var(--accent); text-decoration: none; }
-a:hover{ text-decoration: underline; }
-
-/* ---------- Layout helpers ---------- */
-.container{
-  width: 92%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 28px 0;
+.container {
+    width: 100%;
+    max-width: 600px;
 }
 
-.row{
-  display:flex;
-  gap: 24px;
-  align-items: flex-start;
-  flex-wrap: wrap;
+.card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* ---------- Header ---------- */
-.header{
-  background: linear-gradient(90deg, rgba(14,165,233,0.06), transparent);
-  border-radius: 0 0 16px 16px;
-  box-shadow: var(--shadow-sm);
-  padding: 18px 0;
+h1 {
+    color: #1a1a1a;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
 }
 
-.header .nav{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+.subtitle {
+    color: #666666;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 32px;
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-  font-size:18px;
+.wheels-container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    justify-content: center;
 }
 
-.logo .mark{
-  width:34px;
-  height:34px;
-  border-radius:8px;
-  background: linear-gradient(135deg,var(--accent),var(--accent-dark));
-  display:inline-block;
-  box-shadow: var(--shadow-sm);
+.wheel-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-/* ---------- Hero ---------- */
-.hero{
-  display:flex;
-  gap: 32px;
-  align-items:center;
-  padding: 40px 0;
+.wheel-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888888;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 12px;
 }
 
-.hero .left{
-  flex:1 1 420px;
+.wheel-wrapper {
+    position: relative;
+    background: #FAFAFA;
+    border-radius: 16px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.hero h1{
-  font-size: 2rem;
-  line-height: 1.05;
-  margin: 0 0 12px;
+.selection-indicator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 44px;
+    border-top: 1px solid #D0D0D0;
+    border-bottom: 1px solid #D0D0D0;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.hero p{
-  margin: 0 0 18px;
-  color: var(--muted);
-  font-size: 1rem;
+.wheel {
+    height: 180px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+    scroll-behavior: smooth;
 }
 
-/* CTA */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: none;
-  background: var(--accent);
-  color: #fff;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow: var(--shadow-sm);
-  transition: transform .12s ease, box-shadow .12s ease;
-}
-.btn:active{ transform: translateY(1px); }
-.btn.secondary{
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid rgba(14,165,233,0.15);
-  box-shadow: none;
+.wheel::-webkit-scrollbar {
+    display: none;
 }
 
-/* ---------- Card / content ---------- */
-.card{
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: var(--shadow-md);
+.wheel:focus {
+    outline: 2px solid #5B7FE8;
+    outline-offset: 2px;
+    border-radius: 16px;
 }
 
-/* simple grid for features or content */
-.grid{
-  display:grid;
-  grid-template-columns: repeat(1,minmax(0,1fr));
-  gap: 18px;
-}
-@media(min-width:800px){
-  .grid{ grid-template-columns: repeat(2,minmax(0,1fr)); }
+.wheel-items {
+    padding: 68px 0;
 }
 
-/* ---------- Footer (normal) ---------- */
-.footer{
-  text-align: center;
-  padding: 22px 12px;
-  margin-top: 40px;
-  color: var(--muted);
-  font-size: 15px;
-  background: transparent;
+.wheel-item {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    font-size: 16px;
+    color: #B0B0B0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
 }
 
-.footer .brand{
-  display:block;
-  margin-bottom:8px;
-  font-weight:600;
-  color: var(--text);
+.wheel-item.selected {
+    color: #4A90E2;
+    font-size: 22px;
+    font-weight: 600;
 }
 
-/* Built-by styling included in footer content */
-.footer .built-by{
-  font-weight:700;
-  color: var(--accent-dark);
+.wheel-item:hover {
+    color: #3B7AC7;
 }
 
-/* ---------- Floating "Built by Abhay" badge ---------- */
-/* This is optional — use <div class="built-by-badge">Built by Abhay</div> in HTML */
-.built-by-badge{
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 9999;
-  background: rgba(2,132,199,0.95); /* accent dark */
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight:600;
-  font-size: 13px;
-  box-shadow: 0 6px 18px rgba(2,132,199,0.18);
-  transform: translateY(0);
-  transition: transform .18s ease, opacity .18s ease;
-  backdrop-filter: blur(6px);
-  cursor: default;
-}
-.built-by-badge:hover{
-  transform: translateY(-3px);
+.find-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #8B5CF6 0%, #6B46C1 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
-/* ---------- Small components ---------- */
-.kv{
-  display:flex;
-  gap:12px;
-  align-items:center;
-}
-.kv .label{
-  color: var(--muted);
-  font-size: 13px;
-  min-width: 88px;
-}
-.kv .value{
-  font-weight:600;
+.find-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
-/* forms */
-.input, textarea{
-  width:100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(16,24,40,0.06);
-  background: #fff;
-  font-size: 14px;
-  outline: none;
-  box-shadow: var(--shadow-sm);
-}
-.input:focus, textarea:focus{
-  border-color: var(--accent);
-  box-shadow: 0 6px 18px rgba(14,165,233,0.08);
+.find-btn:active {
+    transform: translateY(0);
 }
 
-/* ---------- Utilities ---------- */
-.text-center{ text-align:center; }
-.muted{ color: var(--muted); }
-.mt-8{ margin-top: 8px; }
-.mt-16{ margin-top: 16px; }
-.mb-8{ margin-bottom: 8px; }
-
-/* ---------- Small responsive tweaks ---------- */
-@media (max-width:799px){
-  .hero{ flex-direction: column; align-items: flex-start; gap: 18px; padding: 18px 0; }
-  .header .nav{ padding: 0 6px; }
-  .container{ width:94%; }
-  .built-by-badge{ right: 10px; bottom: 10px; padding: 6px 10px; font-size: 12px; }
+.find-btn:focus {
+    outline: 2px solid #8B5CF6;
+    outline-offset: 2px;
 }
 
-/* ---------- Accessibility & focus states ---------- */
-a:focus, button:focus, .input:focus {
-  outline: 3px solid rgba(14,165,233,0.14);
-  outline-offset: 2px;
+.message-area {
+    margin-top: 20px;
+    min-height: 60px;
 }
 
-/* ---------- Micro animation (optional) ---------- */
-.fade-in {
-  opacity:0;
-  transform: translateY(6px);
-  animation: fadeInUp .45s ease forwards;
-}
-@keyframes fadeInUp {
-  to { opacity:1; transform: translateY(0); }
+.result {
+    display: none;
+    padding: 20px;
+    background: #F0F9FF;
+    border-radius: 12px;
+    color: #0C4A6E;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+    border-left: 4px solid #38BDF8;
 }
 
-/* ---------- Tiny helper for local preview path problems ----------
-   If your index filename or relative paths are wrong, nothing here will fix that,
-   but this CSS assumes style.css + script.js are in same folder as index.html.
-   ----------------------------------------------------------------------- */
+.result.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
 
-/* ---------- End of file ---------- */
+.error {
+    display: none;
+    padding: 16px;
+    background: #FEF2F2;
+    border-radius: 12px;
+    color: #B91C1C;
+    font-size: 14px;
+    text-align: center;
+    border-left: 4px solid #EF4444;
+}
+
+.error.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.footer {
+    margin-top: 24px;
+    text-align: center;
+    color: #999999;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    .wheels-container {
+        gap: 12px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .wheel {
+        height: 160px;
+    }
+
+    .wheel-item {
+        font-size: 14px;
+    }
+
+    .wheel-item.selected {
+        font-size: 18px;
+    }
+}
