@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #E8DFF5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    color: #1a1a1a;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.subtitle {
+    color: #666666;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.wheels-container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+.wheel-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wheel-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888888;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.wheel-wrapper {
+    position: relative;
+    background: #FAFAFA;
+    border-radius: 16px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.selection-indicator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 44px;
+    border-top: 1px solid #D0D0D0;
+    border-bottom: 1px solid #D0D0D0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.wheel {
+    height: 180px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+.wheel::-webkit-scrollbar {
+    display: none;
+}
+
+.wheel:focus {
+    outline: 2px solid #5B7FE8;
+    outline-offset: 2px;
+    border-radius: 16px;
+}
+
+.wheel-items {
+    padding: 68px 0;
+}
+
+.wheel-item {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    font-size: 16px;
+    color: #B0B0B0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.wheel-item.selected {
+    color: #4A90E2;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.wheel-item:hover {
+    color: #3B7AC7;
+}
+
+.find-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #8B5CF6 0%, #6B46C1 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.find-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.find-btn:active {
+    transform: translateY(0);
+}
+
+.find-btn:focus {
+    outline: 2px solid #8B5CF6;
+    outline-offset: 2px;
+}
+
+.message-area {
+    margin-top: 20px;
+    min-height: 60px;
+}
+
+.result {
+    display: none;
+    padding: 20px;
+    background: #F0F9FF;
+    border-radius: 12px;
+    color: #0C4A6E;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+    border-left: 4px solid #38BDF8;
+}
+
+.result.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.error {
+    display: none;
+    padding: 16px;
+    background: #FEF2F2;
+    border-radius: 12px;
+    color: #B91C1C;
+    font-size: 14px;
+    text-align: center;
+    border-left: 4px solid #EF4444;
+}
+
+.error.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    .wheels-container {
+        gap: 12px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .wheel {
+        height: 160px;
+    }
+
+    .wheel-item {
+        font-size: 14px;
+    }
+
+    .wheel-item.selected {
+        font-size: 18px;
+    }
+}

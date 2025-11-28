@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Day Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🎂 Birth Day Finder</h1>
+            <p class="subtitle">Scroll to select your birth date</p>
+
+            <div class="wheels-container">
+                <div class="wheel-group">
+                    <label for="monthWheel" class="wheel-label">MONTH</label>
+                    <div class="wheel-wrapper">
+                        <div class="selection-indicator"></div>
+                        <div 
+                            class="wheel" 
+                            id="monthWheel" 
+                            role="listbox" 
+                            aria-label="Month selector"
+                            tabindex="0"
+                        >
+                            <div class="wheel-items" id="monthItems"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wheel-group">
+                    <label for="dayWheel" class="wheel-label">DAY</label>
+                    <div class="wheel-wrapper">
+                        <div class="selection-indicator"></div>
+                        <div 
+                            class="wheel" 
+                            id="dayWheel" 
+                            role="listbox" 
+                            aria-label="Day selector"
+                            tabindex="0"
+                        >
+                            <div class="wheel-items" id="dayItems"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wheel-group">
+                    <label for="yearWheel" class="wheel-label">YEAR</label>
+                    <div class="wheel-wrapper">
+                        <div class="selection-indicator"></div>
+                        <div 
+                            class="wheel" 
+                            id="yearWheel" 
+                            role="listbox" 
+                            aria-label="Year selector"
+                            tabindex="0"
+                        >
+                            <div class="wheel-items" id="yearItems"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="findDayBtn" class="find-btn">Find My Day</button>
+
+            <div class="message-area">
+                <div id="result" class="result" role="status" aria-live="polite"></div>
+                <div id="error" class="error" role="alert" aria-live="assertive"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
