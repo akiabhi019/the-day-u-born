@@ -1,81 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birth Day Finder</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Abhay" />
+  <title>Your Site — Built by Abhay</title>
+  <!-- Link to the stylesheet (overwrite style.css with the file I gave you) -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Basic favicon fallback -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
     <div class="container">
-        <div class="card">
-            <h1>🎂 Birth Day Finder</h1>
-            <p class="subtitle">Scroll to select your birth date</p>
-
-            <div class="wheels-container">
-                <div class="wheel-group">
-                    <label for="monthWheel" class="wheel-label">MONTH</label>
-                    <div class="wheel-wrapper">
-                        <div class="selection-indicator"></div>
-                        <div 
-                            class="wheel" 
-                            id="monthWheel" 
-                            role="listbox" 
-                            aria-label="Month selector"
-                            tabindex="0"
-                        >
-                            <div class="wheel-items" id="monthItems"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wheel-group">
-                    <label for="dayWheel" class="wheel-label">DAY</label>
-                    <div class="wheel-wrapper">
-                        <div class="selection-indicator"></div>
-                        <div 
-                            class="wheel" 
-                            id="dayWheel" 
-                            role="listbox" 
-                            aria-label="Day selector"
-                            tabindex="0"
-                        >
-                            <div class="wheel-items" id="dayItems"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wheel-group">
-                    <label for="yearWheel" class="wheel-label">YEAR</label>
-                    <div class="wheel-wrapper">
-                        <div class="selection-indicator"></div>
-                        <div 
-                            class="wheel" 
-                            id="yearWheel" 
-                            role="listbox" 
-                            aria-label="Year selector"
-                            tabindex="0"
-                        >
-                            <div class="wheel-items" id="yearItems"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button id="findDayBtn" class="find-btn">Find My Day</button>
-
-            <div class="message-area">
-                <div id="result" class="result" role="status" aria-live="polite"></div>
-                <div id="error" class="error" role="alert" aria-live="assertive"></div>
-            </div>
+      <nav class="nav">
+        <div class="logo">
+          <span class="mark" aria-hidden="true"></span>
+          <span class="site-title">My Static Site</span>
         </div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <script src="script.js"></script>
+  <!-- Main content -->
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="left">
+        <h1 class="fade-in">Welcome to my site</h1>
+        <p class="fade-in" style="animation-delay:.05s">
+          This is a simple static site built with HTML, CSS and JavaScript. Replace this text with your content.
+        </p>
+        <div style="margin-top:16px" class="fade-in" >
+          <a class="btn" href="#features">Explore features</a>
+          <a class="btn secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="right card" style="flex:0 0 320px;">
+        <h3>Quick details</h3>
+        <div class="kv mt-8"><div class="label">Author</div><div class="value">Abhay</div></div>
+        <div class="kv mt-8"><div class="label">Built</div><div class="value">Static HTML/CSS/JS</div></div>
+        <div class="kv mt-8"><div class="label">Status</div><div class="value">Ready to deploy</div></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="mt-16">
+      <div class="grid">
+        <div class="card fade-in">
+          <h4>Responsive layout</h4>
+          <p class="muted">Mobile-first CSS and flexible grid for modern devices.</p>
+        </div>
+        <div class="card fade-in" style="animation-delay:.05s">
+          <h4>Easy to deploy</h4>
+          <p class="muted">Works with Vercel and Netlify (no build required).</p>
+        </div>
+        <div class="card fade-in" style="animation-delay:.08s">
+          <h4>Customizable</h4>
+          <p class="muted">Edit HTML, swap colors in :root, or update content freely.</p>
+        </div>
+        <div class="card fade-in" style="animation-delay:.11s">
+          <h4>Footer & badge</h4>
+          <p class="muted">Includes 'Built by Abhay' footer and floating badge.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mt-16">
+      <div class="card">
+        <h3>About this project</h3>
+        <p class="muted">This is a static website example. The HTML references <code>style.css</code> and <code>script.js</code> in the project root. If your deployment shows "Not found", make sure this file is named <strong>index.html</strong> and exists at the repository root (not inside subfolders).</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-16">
+      <div class="card">
+        <h3>Contact</h3>
+        <p class="muted">Want changes? Edit the HTML / CSS files and redeploy.</p>
+
+        <form style="margin-top:12px" onsubmit="event.preventDefault(); alert('Form submission demo — implement with server or service.');">
+          <label>
+            <div class="mt-8">Your name</div>
+            <input class="input" placeholder="Your name" />
+          </label>
+          <label>
+            <div class="mt-8">Message</div>
+            <textarea class="input" rows="4" placeholder="Write a message"></textarea>
+          </label>
+          <div class="mt-16">
+            <button class="btn" type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Normal footer (recommended) -->
     <footer class="footer">
-  Built by <span>Abhay</span>
-</footer>
+      <span class="brand">My Static Site</span>
+      <div class="muted">Made with ❤️</div>
+      <div class="built-by">Built by Abhay</div>
+    </footer>
 
+    <!-- Floating badge (optional) -->
+    <div class="built-by-badge" aria-hidden="true">Built by Abhay</div>
+  </main>
+
+  <!-- Scripts -->
+  <!-- Your script.js (if you have JS logic) -->
+  <script src="script.js" defer></script>
+
+  <!-- Small inline script to add fade-in delays for elements that have .fade-in -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const items = document.querySelectorAll('.fade-in');
+      items.forEach((el, i) => {
+        el.style.animationDelay = (i * 60) + 'ms';
+      });
+    });
+  </script>
 </body>
 </html>
-
